@@ -51,12 +51,16 @@
      database.ref().push(inputObject);
 
      alert("Train info successfully added");
+     $("#train-name-input").text("");
+     $("#destination-input").text("");
+     $("#first-train-input").text("");
+     $("#frequency-input").text("");
  })
 
  // Grab the information from the database, convert to the proper format or type, and save it to local variables
  database.ref().on("child_added", function (childSnapshot) {
      console.log(childSnapshot.val());
-     let object = childSnapshot.val();
+     //let object = childSnapshot.val();
      let newTrainName = childSnapshot.val().name;
      let newDest = childSnapshot.val().dest;
      let newFirstT = childSnapshot.val().firstT;
@@ -96,4 +100,9 @@
          $("<td>").text(minutesAway)
      );
      $("tbody").append(newRow);
+     //This doesn't work
+     $("#train-name-input").val("");
+     $("#destination-input").val("");
+     $("#first-train-input").val("");
+     $("#frequency-input").val("");
  })
