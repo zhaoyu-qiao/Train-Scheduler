@@ -36,8 +36,6 @@
      console.log("firstTrainTime", firstTrainTime);
      console.log("frequency:", frequency);
 
-
-
      // Pay attention to the format and type of the input
 
      // Include the input in an object, and push the object as a child into the correct node(s) in the database
@@ -51,10 +49,7 @@
      database.ref().push(inputObject);
 
      alert("Train info successfully added");
-     $("#train-name-input").text("");
-     $("#destination-input").text("");
-     $("#first-train-input").text("");
-     $("#frequency-input").text("");
+
  })
 
  // Grab the information from the database, convert to the proper format or type, and save it to local variables
@@ -78,17 +73,7 @@
      console.log(minutesAway);
      console.log(nextArrival);
 
-     //  If everything is in the database, can use the below code
-     //  const keys = Object.keys(object);
-     //  console.log(keys);
-     //  let tr = '<tr>';
-     //  for (let i = 0; i < keys.length; i++) {
-     //      tr += '<td>' + object[keys[i]] + '</td>'
-     //      console.log(object[keys[i]])
-     //  }
-     //  tr += '</tr>';
-     //  console.log(tr);
-     //  $("tbody").append(tr);
+
 
      // Need to write the local variables into the html, each time the the admin updates the inputs
      // Create the new row
@@ -100,9 +85,9 @@
          $("<td>").text(minutesAway)
      );
      $("tbody").append(newRow);
-     //This doesn't work
-     $("#train-name-input").val("");
-     $("#destination-input").val("");
-     $("#first-train-input").val("");
-     $("#frequency-input").val("");
+     // This doesn't work
+
+     // Per Mario's suggestion, remove the input id .val(""), use form-control class to clear up the val.
+     $(".form-control").val("");
+
  })
